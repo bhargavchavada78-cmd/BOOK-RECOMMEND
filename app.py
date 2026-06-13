@@ -3,9 +3,21 @@ import pickle
 
 app = Flask(__name__)
 
-model = pickle.load(open("book_model.pkl", "rb"))
-tfidf_vectorizer = pickle.load(open("tfidf.pkl", "rb"))
-df = pickle.load(open("books_data.pkl", "rb"))
+model = None
+tfidf_vectorizer = None
+df = None
+
+def load_data():
+    global model, tfidf_vectorizer, df
+
+    if model is None:
+        model = pickle.load(open("book_model.pkl", "rb"))
+
+    if tfidf_vectorizer is None:
+        tfidf_vectorizer = pickle.load(open("tfidf.pkl", "rb"))
+
+    if df is None:
+        df = pickle.load(open("books_data.pkl", "rb"))
 
 def recommend_books(book_name):
 

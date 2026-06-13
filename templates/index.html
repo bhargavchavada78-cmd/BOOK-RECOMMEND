@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📚 <span>Book Recommendation </span>System</h1>
+
+        <p>
+            Find books similar to your favorite reads
+        </p>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="book_name"
+                placeholder="Enter Book Name..."
+                required>
+
+            <button type="submit">
+                Recommend Books
+            </button>
+
+        </form>
+
+        <div class="result">
+            {% if books %}
+            
+            <h2>Recommended Books</h2>
+
+            {% for book in books %}
+
+            <div class="book-card">
+
+                <h2>{{ book.title }}</h2>
+
+                <p><strong>Author:</strong> {{ book.author }}</p>
+
+                <p><strong>Genre:</strong> {{ book.genre }}</p>
+
+                <p><strong>Description:</strong> {{ book.DESC }}</p>
+
+                <p><strong>Rating:</strong> ⭐ {{ book.rating }}</p>
+
+            </div>
+
+            {% endfor %}
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class = "footer">Created By <span>Bhargav</span></div>
+    </footer>
+
+</body>
+</html>
